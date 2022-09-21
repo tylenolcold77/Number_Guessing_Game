@@ -1,12 +1,10 @@
+
 """
 Python Web Development Techdegree
 Project 1 - Number Guessing Game
 --------------------------------
-
 For this first project we will be using Workspaces. 
-
 NOTE: If you strongly prefer to work locally on your own computer, you can totally do that by clicking: File -> Download Workspace in the file menu after you fork the snapshot of this workspace.
-
 """
 
 import random
@@ -30,20 +28,26 @@ def start_game():
     ( You can add more features/enhancements if you'd like to. )
     """
     # write your code inside this function.
-    count = 0
-    print("Welcome to the guess number game.")
+    count = 1
+    print("Welcome to the guess number game.choose a number between 1-10")
     solution = random.randint(1,11)
-    answer = int(input("enter the number:  "))
-    while solution != answer:
-      if solution < answer:
-        print("It's lower.")
+    try:
         answer = int(input("enter the number:  "))
-      else:
-        print("It's higher.")
-        answer = int(input("enter the number:  "))
-      count += 1
-    print("Got it")
-    print("You take {} times.".format(count))   
-    print("Game over")
+    except Exception as err:
+        print(err)
+    else:
+        if answer < 0 or answer > 10:
+            print("Input should between 1 and 10")
+        while solution != answer:
+          if solution < answer:
+            print("It's lower.")
+            answer = int(input("enter the number:  "))
+          else:
+            print("It's higher.")
+            answer = int(input("enter the number:  "))
+          count += 1
+          print("You take {} times.".format(count))  
+        print("Got it")
+        print("Game over")
 # Kick off the program by calling the start_game function.
 start_game()
